@@ -28,23 +28,35 @@ function App() {
     <Container className="my-5">
       <h1 style={{ textAlign: "center" }}>FIND JOBS ON GITHUB</h1>
       <SearchForm onParamsChange={handleParamChange} params={params} />
-      <Pagination
-        className="mb-4"
-        page={page}
-        setPage={setPage}
-        hasNextPage={hasNextPage}
-      />
+      {error ? (
+        ""
+      ) : (
+        <Pagination
+          className="mb-4"
+          page={page}
+          setPage={setPage}
+          hasNextPage={hasNextPage}
+        />
+      )}
       {loading && <Loading />}
-      {error && <h1>error...Try refreshing</h1>}
+      {error && (
+        <h1 style={{ textAlign: "center" }}>
+          There seems to be an error...Try refreshing
+        </h1>
+      )}
       {jobs.map((job) => {
         return <Job key={job.id} job={job} />;
       })}
-      <Pagination
-        className="mt-4"
-        page={page}
-        setPage={setPage}
-        hasNextPage={hasNextPage}
-      />
+      {error ? (
+        ""
+      ) : (
+        <Pagination
+          className="mt-4"
+          page={page}
+          setPage={setPage}
+          hasNextPage={hasNextPage}
+        />
+      )}
     </Container>
   );
 }

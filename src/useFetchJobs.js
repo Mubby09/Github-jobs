@@ -8,11 +8,6 @@ const ACTIONS = {
   UPDATE_HAS_NEXT_PAGE: "UPDATE_HAS_NEXT_PAGE "
 };
 
-const base_url =
-  "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
-
-// https://cors-anywhere.herokuapp.com
-
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.MAKE_REQUEST: {
@@ -56,6 +51,11 @@ export default function useFetchJobs(params, page) {
     loading: true,
     error: false
   });
+
+  // https://cors-anywhere.herokuapp.com
+
+  const base_url =
+    "https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json";
 
   useEffect(() => {
     let cancelToken1 = axios.CancelToken.source();
